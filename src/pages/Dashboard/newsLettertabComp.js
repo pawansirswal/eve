@@ -89,9 +89,9 @@ class NewsLetterTabComp extends Component {
                 </Dropdown>
                 <h4 className="card-title mb-4">User Master</h4>
 
-                <div class="d-flex justify-content-center">
-                  <div class="spinner-border text-primary" role="status">
-                    <span class="sr-only">Loading...</span>
+                <div className="d-flex justify-content-center">
+                  <div className="spinner-border text-primary" role="status">
+                    <span className="sr-only">Loading...</span>
                   </div>
                 </div>
               </CardBody>
@@ -158,7 +158,7 @@ class NewsLetterTabComp extends Component {
                   // expandRow={ expandRow }
                   rowEvents={this.props.rowEvents}
                   pagination={paginationFactory(options)}
-                  // selectRow={ selectRow }
+                // selectRow={ selectRow }
                 />
               </CardBody>
             </Card>

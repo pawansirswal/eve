@@ -1025,9 +1025,9 @@ class IndTrans extends Component {
                     }
                   ></Button>
 
-                  <div class="d-flex justify-content-center">
-                    <div class="spinner-border text-primary" role="status">
-                      <span class="sr-only">Loading...</span>
+                  <div className="d-flex justify-content-center">
+                    <div className="spinner-border text-primary" role="status">
+                      <span className="sr-only">Loading...</span>
                     </div>
                   </div>
                 </CardBody>
@@ -1082,7 +1082,7 @@ class IndTrans extends Component {
                   {this.state.loader ? (
                     <div style={{ marginTop: "60px", textAlign: "center" }}>
                       <span
-                        class="spinner-border spinner-border-sm"
+                        className="spinner-border spinner-border-sm"
                         role="status"
                         aria-hidden="true"
                       ></span>
@@ -1099,7 +1099,7 @@ class IndTrans extends Component {
                     filter={filterFactory()}
                     // expandRow={ expandRow }
                     pagination={paginationFactory(options)}
-                    // selectRow={ selectRow }
+                  // selectRow={ selectRow }
                   />
                 </CardBody>
               </Card>

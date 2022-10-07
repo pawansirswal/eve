@@ -159,7 +159,7 @@ class FirmTableComp extends Component {
               >
                 <button
                   className="btn btn-success btn-xs"
-                  // onClick={() => this.handleDelete(row.transaction_id)}
+                // onClick={() => this.handleDelete(row.transaction_id)}
                 >
                   View Docs
                 </button>
@@ -226,9 +226,9 @@ class FirmTableComp extends Component {
                 </Dropdown>
                 <h4 className="card-title mb-4">Firm Master</h4>
 
-                <div class="d-flex justify-content-center">
-                  <div class="spinner-border text-primary" role="status">
-                    <span class="sr-only">Loading...</span>
+                <div className="d-flex justify-content-center">
+                  <div className="spinner-border text-primary" role="status">
+                    <span className="sr-only">Loading...</span>
                   </div>
                 </div>
               </CardBody>
@@ -269,7 +269,7 @@ class FirmTableComp extends Component {
                   rowEvents={this.props.rowEvents}
                   pagination={paginationFactory(options)}
                   defaultSorted={defaultSortedBy}
-                  // selectRow={ selectRow }
+                // selectRow={ selectRow }
                 />
               </CardBody>
             </Card>

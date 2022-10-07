@@ -440,11 +440,11 @@ class PendingTransaction extends Component {
         //   console.log("eachElement.executionDate new", eachElement.executionDate);
         // })
         for (let i = 0; i < json.length; i++) {
-          
-            json[i].executionDate = new Date(json[i].executionDate)
-          
+
+          json[i].executionDate = new Date(json[i].executionDate)
+
         }
-          
+
         this.setState({ tableData: json, isLoading: false });
         console.log(this.state.tableData);
       });
@@ -1027,9 +1027,9 @@ class PendingTransaction extends Component {
                     }
                   ></Button>
 
-                  <div class="d-flex justify-content-center">
-                    <div class="spinner-border text-primary" role="status">
-                      <span class="sr-only">Loading...</span>
+                  <div className="d-flex justify-content-center">
+                    <div className="spinner-border text-primary" role="status">
+                      <span className="sr-only">Loading...</span>
                     </div>
                   </div>
                 </CardBody>
@@ -1084,7 +1084,7 @@ class PendingTransaction extends Component {
                   {this.state.loader ? (
                     <div style={{ marginTop: "60px", textAlign: "center" }}>
                       <span
-                        class="spinner-border spinner-border-sm"
+                        className="spinner-border spinner-border-sm"
                         role="status"
                         aria-hidden="true"
                       ></span>
@@ -1101,7 +1101,7 @@ class PendingTransaction extends Component {
                     filter={filterFactory()}
                     // expandRow={ expandRow }
                     pagination={paginationFactory(options)}
-                    // selectRow={ selectRow }
+                  // selectRow={ selectRow }
                   />
                 </CardBody>
               </Card>

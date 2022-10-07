@@ -209,7 +209,7 @@ class BillingPartyDetailsComp extends Component {
               >
                 <button
                   className="btn btn-success btn-xs"
-                  // onClick={() => this.handleDelete(row.transaction_id)}
+                // onClick={() => this.handleDelete(row.transaction_id)}
                 >
                   View Docs
                 </button>
@@ -226,7 +226,7 @@ class BillingPartyDetailsComp extends Component {
               <Link to={`/viewtrans/${row.buyerName}`}>
                 <button
                   className="btn btn-success btn-xs"
-                  // onClick={() => this.handleDelete(row.transaction_id)}
+                // onClick={() => this.handleDelete(row.transaction_id)}
                 >
                   Transactions
                 </button>
@@ -285,9 +285,9 @@ class BillingPartyDetailsComp extends Component {
                 </Dropdown>
 
                 <h4 className="card-title mb-4">Customer Details</h4>
-                <div class="d-flex justify-content-center">
-                  <div class="spinner-border text-primary" role="status">
-                    <span class="sr-only">Loading...</span>
+                <div className="d-flex justify-content-center">
+                  <div className="spinner-border text-primary" role="status">
+                    <span className="sr-only">Loading...</span>
                   </div>
                 </div>
               </CardBody>
@@ -334,7 +334,7 @@ class BillingPartyDetailsComp extends Component {
                   // expandRow={ expandRow }
                   pagination={paginationFactory(options)}
                   rowEvents={this.props.rowEvents}
-                  // selectRow={ selectRow }
+                // selectRow={ selectRow }
                 />
               </CardBody>
             </Card>

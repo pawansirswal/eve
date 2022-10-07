@@ -7,37 +7,37 @@ import 'toastr/build/toastr.min.css'
 import Breadcrumbs from '../../components/Common/Breadcrumb';
 
 class UiNotifications extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-        breadcrumbItems : [
-            { title : "UI Elements", link : "#" },
-            { title : "Notifications", link : "#" },
-        ],
-        showEasing : "swing",
-        hideEasing : "linear",
-        showMethod : "fadeIn",
-        hideMethod : "fadeOut",
+    constructor(props) {
+        super(props);
+        this.state = {
+            breadcrumbItems: [
+                { title: "UI Elements", link: "#" },
+                { title: "Notifications", link: "#" },
+            ],
+            showEasing: "swing",
+            hideEasing: "linear",
+            showMethod: "fadeIn",
+            hideMethod: "fadeOut",
 
-        showDuration : 300,
-        hideDuration : 1000,
-        timeOut : 5000,
-        extendedTimeOut : 1000
-    };
-    this.showToast.bind(this);
-    this.clearToast.bind(this);
-    this.clearLastToast.bind(this);
-  }
+            showDuration: 300,
+            hideDuration: 1000,
+            timeOut: 5000,
+            extendedTimeOut: 1000
+        };
+        this.showToast.bind(this);
+        this.clearToast.bind(this);
+        this.clearLastToast.bind(this);
+    }
 
-    showToast(){
-        var ele = document.getElementsByName('toastType'); 
+    showToast() {
+        var ele = document.getElementsByName('toastType');
         var position = document.getElementsByName("positions");
         var toastType;
         var title = document.getElementById("title").value;
         var message = "Have fun storming the castle!";
-        
-        if (document.getElementById("message").value !== "" )
-            message=document.getElementById("message").value;
+
+        if (document.getElementById("message").value !== "")
+            message = document.getElementById("message").value;
 
         //Close Button
         var closeButton = document.getElementById("closeButton").checked;
@@ -58,69 +58,69 @@ class UiNotifications extends Component {
         var positionClass = "toast-top-right";
 
         //Fetch position
-        for(var p = 0; p < position.length; p++) { 
-            if(position[p].checked) 
-                positionClass=position[p].value
+        for (var p = 0; p < position.length; p++) {
+            if (position[p].checked)
+                positionclassName = position[p].value
         }
 
         //Show Easing
         var showEasing = document.getElementById("showEasing").value;
-        
+
         //Hide Easing
-        var hideEasing  = document.getElementById("hideEasing").value;
+        var hideEasing = document.getElementById("hideEasing").value;
 
         //show method
-        var showMethod  = document.getElementById("showMethod").value;
+        var showMethod = document.getElementById("showMethod").value;
 
         //Hide method
-        var hideMethod  = document.getElementById("hideMethod").value;
+        var hideMethod = document.getElementById("hideMethod").value;
 
 
         //show duration
-        var showDuration  = document.getElementById("showDuration").value;
+        var showDuration = document.getElementById("showDuration").value;
 
         //Hide duration
-        var hideDuration  = document.getElementById("hideDuration").value;
+        var hideDuration = document.getElementById("hideDuration").value;
 
         //timeout
-        var timeOut  = document.getElementById("timeOut").value;
+        var timeOut = document.getElementById("timeOut").value;
 
         //extended timeout
-        var extendedTimeOut   = document.getElementById("extendedTimeOut").value;
+        var extendedTimeOut = document.getElementById("extendedTimeOut").value;
 
         //Fetch checked Type
-        for(var i = 0; i < ele.length; i++) { 
-            if(ele[i].checked) 
-                toastType=ele[i].value
+        for (var i = 0; i < ele.length; i++) {
+            if (ele[i].checked)
+                toastType = ele[i].value
         }
-        
+
         toastr.options = {
-            positionClass : positionClass,
+            positionClass: positionClass,
             timeOut: timeOut,
-            extendedTimeOut : extendedTimeOut,
-            closeButton : closeButton,
-            debug : debug,
-            progressBar : progressBar,
-            preventDuplicates : preventDuplicates,
-            newestOnTop : newestOnTop,
-            showEasing : showEasing,
-            hideEasing : hideEasing,
-            showMethod : showMethod,
-            hideMethod : hideMethod,
-            showDuration : showDuration,
-            hideDuration : hideDuration
+            extendedTimeOut: extendedTimeOut,
+            closeButton: closeButton,
+            debug: debug,
+            progressBar: progressBar,
+            preventDuplicates: preventDuplicates,
+            newestOnTop: newestOnTop,
+            showEasing: showEasing,
+            hideEasing: hideEasing,
+            showMethod: showMethod,
+            hideMethod: hideMethod,
+            showDuration: showDuration,
+            hideDuration: hideDuration
         }
-        
+
         // setTimeout(() => toastr.success(`Settings updated `), 300)
         //Toaster Types
-        if(toastType === "info")
-            toastr.info(message,title)
-        else if(toastType === "warning")
-            toastr.warning(message,title)
-        else if(toastType === "error")
-            toastr.error(message,title)
+        if (toastType === "info")
+            toastr.info(message, title)
+        else if (toastType === "warning")
+            toastr.warning(message, title)
+        else if (toastType === "error")
+            toastr.error(message, title)
         else
-            toastr.success(message,title)
+            toastr.success(message, title)
     }
 
     clearToast() {
@@ -128,28 +128,28 @@ class UiNotifications extends Component {
     }
 
     clearLastToast() {
-        var ele = document.getElementsByName('toastType'); 
+        var ele = document.getElementsByName('toastType');
         var toastType;
         var title = document.getElementById("title").value;
         var msg = document.getElementById("message").value;
-         //Fetch checked Type
-         for(var i = 0; i < ele.length; i++) { 
-            if(ele[i].checked) 
-                toastType=ele[i].value
+        //Fetch checked Type
+        for (var i = 0; i < ele.length; i++) {
+            if (ele[i].checked)
+                toastType = ele[i].value
         }
         var tmpToast = toastr[toastType](msg, title);
         var toastlast = tmpToast;
         toastr.clear(toastlast);
     }
 
-  render() {
-    return (
-      <React.Fragment>
+    render() {
+        return (
+            <React.Fragment>
                 <div className="page-content">
                     <Container fluid={true}>
 
-                    <Breadcrumbs title="Notifications" breadcrumbItems={this.state.breadcrumbItems} />
-                   
+                        <Breadcrumbs title="Notifications" breadcrumbItems={this.state.breadcrumbItems} />
+
                         <Row>
                             <Col lg="12">
                                 <Card>
@@ -169,162 +169,162 @@ class UiNotifications extends Component {
                                                     </div>
                                                 </div>
                                                 <div className="control-group my-4">
-                
+
                                                     <div className="custom-control custom-checkbox mb-2">
-                                                        <Input type="checkbox" className="custom-control-input input-mini" id="closeButton" value="checked"/>
+                                                        <Input type="checkbox" className="custom-control-input input-mini" id="closeButton" value="checked" />
                                                         <Label className="custom-control-label" for="closeButton">Close Button</Label>
                                                     </div>
-                
+
                                                     <div className="custom-control custom-checkbox mb-2">
-                                                        <Input type="checkbox" className="custom-control-input input-mini" id="debugInfo" value="checked"/>
+                                                        <Input type="checkbox" className="custom-control-input input-mini" id="debugInfo" value="checked" />
                                                         <Label className="custom-control-label" for="debugInfo">Debug</Label>
                                                     </div>
-                
+
                                                     <div className="custom-control custom-checkbox mb-2">
-                                                        <Input type="checkbox" className="custom-control-input input-mini" id="progressBar" value="checked"/>
+                                                        <Input type="checkbox" className="custom-control-input input-mini" id="progressBar" value="checked" />
                                                         <Label className="custom-control-label" for="progressBar">Progress Bar</Label>
                                                     </div>
-                
+
                                                     <div className="custom-control custom-checkbox mb-2">
-                                                        <Input type="checkbox" className="custom-control-input input-mini" id="preventDuplicates" value="checked"/>
+                                                        <Input type="checkbox" className="custom-control-input input-mini" id="preventDuplicates" value="checked" />
                                                         <Label className="custom-control-label" for="preventDuplicates">Prevent Duplicates</Label>
                                                     </div>
-                
+
                                                     <div className="custom-control custom-checkbox mb-2">
-                                                        <Input type="checkbox" className="custom-control-input input-mini" id="addClear" value="checked"/>
+                                                        <Input type="checkbox" className="custom-control-input input-mini" id="addClear" value="checked" />
                                                         <Label className="custom-control-label" for="addClear">Add button to force clearing a toast, ignoring focus</Label>
                                                     </div>
-                
+
                                                     <div className="custom-control custom-checkbox mb-2">
-                                                        <Input type="checkbox" className="custom-control-input input-mini" id="newestOnTop" value="checked"/>
+                                                        <Input type="checkbox" className="custom-control-input input-mini" id="newestOnTop" value="checked" />
                                                         <Label className="custom-control-label" for="newestOnTop">Newest on top</Label>
                                                     </div>
-                
+
                                                 </div>
                                             </Col>
-                
+
                                             <Col xl="2">
                                                 <div className="control-group" id="toastTypeGroup">
                                                     <div className="controls mb-4">
                                                         <Label className="h6">Toast Type</Label>
-                
+
                                                         <div className="custom-control custom-radio mb-2">
-                                                            <Input type="radio" id="radio1" name="toastType" className="custom-control-input" value="success" defaultChecked/>
+                                                            <Input type="radio" id="radio1" name="toastType" className="custom-control-input" value="success" defaultChecked />
                                                             <Label className="custom-control-label" for="radio1">Success</Label>
                                                         </div>
-                
+
                                                         <div className="custom-control custom-radio mb-2">
-                                                            <Input type="radio" id="radio2" name="toastType" className="custom-control-input" value="info"/>
+                                                            <Input type="radio" id="radio2" name="toastType" className="custom-control-input" value="info" />
                                                             <Label className="custom-control-label" for="radio2">Info</Label>
                                                         </div>
-                
+
                                                         <div className="custom-control custom-radio mb-2">
-                                                            <Input type="radio" id="radio3" name="toastType" className="custom-control-input" value="warning"/>
+                                                            <Input type="radio" id="radio3" name="toastType" className="custom-control-input" value="warning" />
                                                             <Label className="custom-control-label" for="radio3">Warning</Label>
                                                         </div>
-                
+
                                                         <div className="custom-control custom-radio mb-2">
-                                                            <Input type="radio" id="radio4" name="toastType" className="custom-control-input" value="error"/>
+                                                            <Input type="radio" id="radio4" name="toastType" className="custom-control-input" value="error" />
                                                             <Label className="custom-control-label" for="radio4">Error</Label>
                                                         </div>
-                
+
                                                     </div>
                                                 </div>
                                                 <div className="control-group" id="positionGroup">
                                                     <div className="controls mb-4">
                                                         <Label className="h6">Position</Label>
-                
+
                                                         <div className="custom-control custom-radio mb-2">
-                                                            <Input type="radio" id="radio5" name="positions" className="custom-control-input" value="toast-top-right"/>
+                                                            <Input type="radio" id="radio5" name="positions" className="custom-control-input" value="toast-top-right" />
                                                             <Label className="custom-control-label" for="radio5">Top Right</Label>
                                                         </div>
-                
+
                                                         <div className="custom-control custom-radio mb-2">
                                                             <Input type="radio" id="radio6" name="positions" className="custom-control-input" value="toast-bottom-right" />
                                                             <Label className="custom-control-label" for="radio6">Bottom Right</Label>
                                                         </div>
-                
+
                                                         <div className="custom-control custom-radio mb-2">
                                                             <Input type="radio" id="radio7" name="positions" className="custom-control-input" value="toast-bottom-left" />
                                                             <Label className="custom-control-label" for="radio7">Bottom Left</Label>
                                                         </div>
-                
+
                                                         <div className="custom-control custom-radio mb-2">
                                                             <Input type="radio" id="radio8" name="positions" className="custom-control-input" value="toast-top-left" />
                                                             <Label className="custom-control-label" for="radio8">Top Left</Label>
                                                         </div>
-                
+
                                                         <div className="custom-control custom-radio mb-2">
                                                             <Input type="radio" id="radio9" name="positions" className="custom-control-input" value="toast-top-full-width" />
                                                             <Label className="custom-control-label" for="radio9">Top Full Width</Label>
                                                         </div>
-                
+
                                                         <div className="custom-control custom-radio mb-2">
                                                             <Input type="radio" id="radio10" name="positions" className="custom-control-input" value="toast-bottom-full-width" />
                                                             <Label className="custom-control-label" for="radio10">Bottom Full Width</Label>
                                                         </div>
-                
+
                                                         <div className="custom-control custom-radio mb-2">
                                                             <Input type="radio" id="radio11" name="positions" className="custom-control-input" value="toast-top-center" />
                                                             <Label className="custom-control-label" for="radio11">Top Center</Label>
                                                         </div>
-                
+
                                                         <div className="custom-control custom-radio mb-2">
                                                             <Input type="radio" id="radio12" name="positions" className="custom-control-input" value="toast-bottom-center" />
                                                             <Label className="custom-control-label" for="radio12">Bottom Center</Label>
                                                         </div>
-                
+
                                                     </div>
                                                 </div>
                                             </Col>
-                
+
                                             <Col xl="3">
                                                 <div className="control-group">
                                                     <div className="controls">
                                                         <FormGroup>
                                                             <Label for="showEasing">Show Easing</Label>
-                                                            <Input id="showEasing" type="text" placeholder="swing, linear" className="input-mini form-control" value={this.state.showEasing} onChange={ (e) => { this.setState({showEasing : e.target.value})}} />
+                                                            <Input id="showEasing" type="text" placeholder="swing, linear" className="input-mini form-control" value={this.state.showEasing} onChange={(e) => { this.setState({ showEasing: e.target.value }) }} />
                                                         </FormGroup>
                                                         <FormGroup>
                                                             <Label for="hideEasing">Hide Easing</Label>
-                                                            <Input id="hideEasing" type="text" placeholder="swing, linear" className="input-mini form-control" value={this.state.hideEasing} onChange={ (e) => { this.setState({hideEasing : e.target.value})}}/>
+                                                            <Input id="hideEasing" type="text" placeholder="swing, linear" className="input-mini form-control" value={this.state.hideEasing} onChange={(e) => { this.setState({ hideEasing: e.target.value }) }} />
                                                         </FormGroup>
                                                         <FormGroup>
                                                             <Label for="showMethod">Show Method</Label>
-                                                            <Input id="showMethod" type="text" placeholder="show, fadeIn, slideDown" className="input-mini form-control" value={this.state.showMethod} onChange={ (e) => { this.setState({showMethod : e.target.value})}} />
+                                                            <Input id="showMethod" type="text" placeholder="show, fadeIn, slideDown" className="input-mini form-control" value={this.state.showMethod} onChange={(e) => { this.setState({ showMethod: e.target.value }) }} />
                                                         </FormGroup>
                                                         <FormGroup>
                                                             <Label for="hideMethod">Hide Method</Label>
-                                                            <Input id="hideMethod" type="text" placeholder="hide, fadeOut, slideUp" className="input-mini form-control" value={this.state.hideMethod} onChange={ (e) => { this.setState({hideMethod : e.target.value})}} />
+                                                            <Input id="hideMethod" type="text" placeholder="hide, fadeOut, slideUp" className="input-mini form-control" value={this.state.hideMethod} onChange={(e) => { this.setState({ hideMethod: e.target.value }) }} />
                                                         </FormGroup>
                                                     </div>
                                                 </div>
                                             </Col>
-                
+
                                             <Col xl="3">
                                                 <div className="control-group">
                                                     <div className="controls">
                                                         <FormGroup>
                                                             <Label for="showDuration">Show Duration</Label>
-                                                            <Input id="showDuration" type="text" placeholder="ms" className="input-mini form-control" value={this.state.showDuration} onChange={ (e) => { this.setState({showDuration : e.target.value})}} />
+                                                            <Input id="showDuration" type="text" placeholder="ms" className="input-mini form-control" value={this.state.showDuration} onChange={(e) => { this.setState({ showDuration: e.target.value }) }} />
                                                         </FormGroup>
                                                         <FormGroup>
                                                             <Label for="hideDuration">Hide Duration</Label>
-                                                            <Input id="hideDuration" type="text" placeholder="ms" className="input-mini form-control" value={this.state.hideDuration} onChange={ (e) => { this.setState({hideDuration : e.target.value})}} />
+                                                            <Input id="hideDuration" type="text" placeholder="ms" className="input-mini form-control" value={this.state.hideDuration} onChange={(e) => { this.setState({ hideDuration: e.target.value }) }} />
                                                         </FormGroup>
                                                         <FormGroup>
                                                             <Label for="timeOut">Time out</Label>
-                                                            <Input id="timeOut" type="text" placeholder="ms" className="input-mini form-control" value={this.state.timeOut} onChange={ (e) => { this.setState({timeOut : e.target.value})}} />
+                                                            <Input id="timeOut" type="text" placeholder="ms" className="input-mini form-control" value={this.state.timeOut} onChange={(e) => { this.setState({ timeOut: e.target.value }) }} />
                                                         </FormGroup>
                                                         <FormGroup>
                                                             <Label for="extendedTimeOut">Extended time out</Label>
-                                                            <Input id="extendedTimeOut" type="text" placeholder="ms" className="input-mini form-control" value={this.state.extendedTimeOut} onChange={ (e) => { this.setState({extendedTimeOut : e.target.value})}}/>
+                                                            <Input id="extendedTimeOut" type="text" placeholder="ms" className="input-mini form-control" value={this.state.extendedTimeOut} onChange={(e) => { this.setState({ extendedTimeOut: e.target.value }) }} />
                                                         </FormGroup>
                                                     </div>
                                                 </div>
                                             </Col>
                                         </Row>
-                
+
                                         <Row className="mt-4">
                                             <Col md="12">
                                                 <div className="button-items">
@@ -348,22 +348,22 @@ class UiNotifications extends Component {
                                                 </div>
                                             </Col>
                                         </Row>
-                
+
                                         <div className="mt-3">
                                             <Col md="12">
-                                                
+
                                             </Col>
                                         </div>
                                     </CardBody>
                                 </Card>
                             </Col>
                         </Row>
-                        
+
                     </Container>
                 </div>
-      </React.Fragment>
-    );
-  }
+            </React.Fragment>
+        );
+    }
 }
 
 export default UiNotifications;

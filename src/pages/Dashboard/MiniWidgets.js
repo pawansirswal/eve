@@ -47,9 +47,10 @@ class MiniWidgets extends Component {
     document.body.classList.add("no_padding");
   }
   tog_large() {
-    this.setState((prevState) => ({
-      modal_large: !prevState.modal_large,
+    this.setState(() => ({
+      modal_large: !this.state.modal_large,
     }));
+    console.log('------------------------------Clicked---------------------------')
     this.removeBodyCss();
   }
   componentDidMount() {
@@ -89,18 +90,20 @@ class MiniWidgets extends Component {
           allGenerators: json,
         });
 
-        json.map((itm) => {
+        json.map((itm, i) => {
           this.setState({
             [itm.generator]: [
               {
                 amount: 0,
                 cnt: 0,
                 transactionType: "sell",
+                id: i
               },
               {
                 amount: 0,
                 cnt: 0,
                 transactionType: "buy",
+                id: i
               },
             ],
           });
@@ -132,7 +135,7 @@ class MiniWidgets extends Component {
     fetch(
       api_route + "/firm/generatorDataBymonth/" + generator + "/" + value
     ).then((res) => {
-      if (res.status == 200) {
+      if (res.status === 200) {
         res.json().then((data) => {
           if (data.length != 0) {
             this.setState({
@@ -162,7 +165,7 @@ class MiniWidgets extends Component {
   inithandleBillsAna = () => {
     fetch(api_route + "/firm/initgeneratorDataBymonth/" + this.state.mon).then(
       (res) => {
-        if (res.status == 200) {
+        if (res.status === 200) {
           res.json().then((data) => {
             if (data.length != 0) {
               // this.setState({
@@ -197,9 +200,9 @@ class MiniWidgets extends Component {
                       {"Total Firms"}
                     </p>
                     <h4 className="mb-0">
-                      <div class="d-flex justify-content-center">
-                        <div class="spinner-border text-primary" role="status">
-                          <span class="sr-only">Loading...</span>
+                      <div className="d-flex justify-content-center">
+                        <div className="spinner-border text-primary" role="status">
+                          <span className="sr-only">Loading...</span>
                         </div>
                       </div>
                     </h4>
@@ -216,7 +219,9 @@ class MiniWidgets extends Component {
                 toggle={this.tog_large}
               >
                 <ModalHeader
-                  toggle={() => this.setState({ modal_large: false })}
+                  toggle={() => {
+                    this.setState({ tog_large: false });
+                  }}
                 >
                   Modal Header{" "}
                 </ModalHeader>
@@ -244,9 +249,9 @@ class MiniWidgets extends Component {
                       {"Total Firms"}
                     </p>
                     <h4 className="mb-0">
-                      <div class="d-flex justify-content-center">
-                        <div class="spinner-border text-primary" role="status">
-                          <span class="sr-only">Loading...</span>
+                      <div className="d-flex justify-content-center">
+                        <div className="spinner-border text-primary" role="status">
+                          <span className="sr-only">Loading...</span>
                         </div>
                       </div>
                     </h4>
@@ -276,9 +281,9 @@ class MiniWidgets extends Component {
                       {"Total Firms"}
                     </p>
                     <h4 className="mb-0">
-                      <div class="d-flex justify-content-center">
-                        <div class="spinner-border text-primary" role="status">
-                          <span class="sr-only">Loading...</span>
+                      <div className="d-flex justify-content-center">
+                        <div className="spinner-border text-primary" role="status">
+                          <span className="sr-only">Loading...</span>
                         </div>
                       </div>
                     </h4>
@@ -300,7 +305,7 @@ class MiniWidgets extends Component {
             </Card>
           </Col>
 
-          <Col key={3} md={4}>
+          <Col key={4} md={4}>
             <Card>
               <CardBody>
                 <Media>
@@ -309,9 +314,9 @@ class MiniWidgets extends Component {
                       {"Total Bills Generated"}
                     </p>
                     <h4 className="mb-0">
-                      <div class="d-flex justify-content-center">
-                        <div class="spinner-border text-primary" role="status">
-                          <span class="sr-only">Loading...</span>
+                      <div className="d-flex justify-content-center">
+                        <div className="spinner-border text-primary" role="status">
+                          <span className="sr-only">Loading...</span>
                         </div>
                       </div>
                     </h4>
@@ -481,8 +486,8 @@ class MiniWidgets extends Component {
                       </p>
                       <h4 className="mb-0">
                         Total : {this.state.tableData[0].transHistory}
-                        {this.state.analyt.map((itm) => (
-                          <div
+                        {this.state.analyt.map((itm, i) => (
+                          <div key={i}
                           //   style={{
                           //     display: "flex",
                           //     justifyContent: "space-between",
@@ -514,7 +519,7 @@ class MiniWidgets extends Component {
             </Link>
           </Col>
           {this.state.manishMittal == undefined ? (
-            <Col key={4} md={4}>
+            <Col key={5} md={4}>
               <Card>
                 <CardBody>
                   <Media>
@@ -524,7 +529,7 @@ class MiniWidgets extends Component {
                       </p>
                       <div>
                         <span
-                          class="spinner-border spinner-border-sm"
+                          className="spinner-border spinner-border-sm"
                           role="status"
                           aria-hidden="true"
                         ></span>
@@ -548,8 +553,8 @@ class MiniWidgets extends Component {
             </Col>
           ) : (
             this.state.manishMittal != undefined &&
-            this.state.allGenerators.map((itm) => (
-              <Col key={4} md={4}>
+            this.state.allGenerators.map((itm, i) => (
+              <Col key={i} md={4}>
                 <Card>
                   <div className="float-right">
                     <select
@@ -604,7 +609,7 @@ class MiniWidgets extends Component {
                         </p>
                         <div>
                           <h3 style={{ textTransform: "capitalize" }}>
-                            {itm.generator == null ? "No User" : itm.generator}{" "}
+                            {itm.generator === null ? "No User" : itm.generator}{" "}
                           </h3>
                           {/* <div className="table-responsive"> */}
                           {this.state[`${itm.generator}`] != undefined && (
@@ -615,14 +620,14 @@ class MiniWidgets extends Component {
                                   {this.state[`${itm.generator}`][0]
                                     .transactionType != undefined
                                     ? this.state[`${itm.generator}`][0]
-                                        .transactionType
+                                      .transactionType
                                     : "-"}
                                 </th>
                                 <th>
                                   {this.state[`${itm.generator}`][1] !=
-                                  undefined
+                                    undefined
                                     ? this.state[`${itm.generator}`][1]
-                                        .transactionType
+                                      .transactionType
                                     : "-"}
                                 </th>
                               </thead>
@@ -637,7 +642,7 @@ class MiniWidgets extends Component {
                                   <td>
                                     {this.state[`${itm.generator}`] !=
                                       undefined &&
-                                    this.state[`${itm.generator}`].length > 1
+                                      this.state[`${itm.generator}`].length > 1
                                       ? this.state[`${itm.generator}`][1].cnt
                                       : 0}
                                   </td>
@@ -652,7 +657,7 @@ class MiniWidgets extends Component {
                                   <td>
                                     {this.state[`${itm.generator}`] !=
                                       undefined &&
-                                    this.state[`${itm.generator}`].length > 1
+                                      this.state[`${itm.generator}`].length > 1
                                       ? this.state[`${itm.generator}`][1].amount
                                       : 0}
                                   </td>

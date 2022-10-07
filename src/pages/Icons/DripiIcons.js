@@ -7,10 +7,10 @@ import Breadcrumbs from '../../components/Common/Breadcrumb';
 class DripiIcons extends Component {
     constructor(props) {
         super(props);
-        this.state={
-            breadcrumbItems : [
-                { title : "Icons", link : "#" },
-                { title : "Dripicons", link : "#" },
+        this.state = {
+            breadcrumbItems: [
+                { title: "Icons", link: "#" },
+                { title: "Dripicons", link: "#" },
             ],
         }
     }
@@ -20,18 +20,18 @@ class DripiIcons extends Component {
                 <div className="page-content">
                     <Container fluid>
 
-                    <Breadcrumbs title="Dripicons" breadcrumbItems={this.state.breadcrumbItems} />
-                        
+                        <Breadcrumbs title="Dripicons" breadcrumbItems={this.state.breadcrumbItems} />
+
                         <Row>
                             <Col xs={12}>
                                 <Card>
                                     <CardBody>
-        
+
                                         <h4 className="card-title">Examples</h4>
                                         <p className="card-title-desc mb-2">Use <code>&lt;i
-                                            class="dripicons-alarm"&gt;&lt;/i&gt;</code>.
+                                            className="dripicons-alarm"&gt;&lt;/i&gt;</code>.
                                         </p>
-        
+
                                         <Row className="icon-demo-content">
                                             <Col xl={3} lg={4} sm={6}>
                                                 <i className="dripicons-alarm"></i> dripicons-alarm
@@ -634,13 +634,13 @@ class DripiIcons extends Component {
                                                 <i className="dripicons-zoom-out"></i> dripicons-zoom-out
                                             </Col>
                                         </Row>
-        
+
                                     </CardBody>
                                 </Card>
                             </Col>
-                        </Row> 
-                        
-                    </Container> 
+                        </Row>
+
+                    </Container>
                 </div>
             </React.Fragment>
         );
