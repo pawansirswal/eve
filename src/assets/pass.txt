@@ -1,0 +1,21 @@
+
+{
+	"username" : "jyoti",
+	"password" : "jyotiDelistedStocks@1#3"
+}
+
+{
+	"username" : "priyanshi",
+	"password" : "priyanshi@delisted#2"
+}
+
+
+{
+	"username" : "manishMittal",
+	"password" : "delisted@manish#2"
+}
+
+{
+	"username" : "isha",
+	"password" : "delisted@isha#4"
+}
