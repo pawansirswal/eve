@@ -5,10 +5,10 @@
 // http://localhost:3003
 if (process.env.NODE_ENV === "development") {
   module.exports = {
-    api_route: "https://node.delistedstocks.in",
+    api_route: "https://backend.egsacademy.org",
   };
 } else {
   module.exports = {
-    api_route: "https://node.delistedstocks.in",
+    api_route: "https://backend.egsacademy.org",
   };
 }
